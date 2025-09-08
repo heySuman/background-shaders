@@ -38,7 +38,7 @@ export default function RootLayout({
               height={35}
             />
             <p className="text-2xl font-medium">
-              background
+              @paper-design | presets
             </p>
           </div>
         </header>

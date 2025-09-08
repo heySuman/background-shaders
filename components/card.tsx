@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { MeshGradient } from "@paper-design/shaders-react";
 
-export function HoverShaderCard({ amplitude = 0.5, hoverSpeed = 0.8, ...props }) {
+export function HoverShaderCard({ hoverSpeed = 0.8, ...props }) {
   const [speed, setSpeed] = useState(0);
 
   return (
@@ -12,6 +12,7 @@ export function HoverShaderCard({ amplitude = 0.5, hoverSpeed = 0.8, ...props })
       className="w-full h-64 rounded-xl overflow-hidden"
     >
       <MeshGradient
+        key={"hover"}
         className="w-full h-full"
         {...props}
         speed={speed}

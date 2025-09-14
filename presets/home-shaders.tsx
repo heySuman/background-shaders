@@ -32,13 +32,13 @@ export const homeShaders: ShaderComponentProps[] = [
         name: 'mesh gradient',
         image: meshGradientImg,
         Component: MeshGradient,
-        shaderConfig: { ...meshGradientPresets[0].params, frame: 41500 },
+        shaderConfig: { ...meshGradientPresets[2].params, frame: 41500 },
     },
     {
         name: 'static mesh gradient',
         image: staticMeshGradientImg,
         Component: StaticMeshGradient,
-        shaderConfig: { ...staticMeshGradientPresets[0].params, rotation: 270, speed: 0 },
+        shaderConfig: { ...staticMeshGradientPresets[3].params, rotation: 270, speed: 0 },
     },
     {
         name: 'static radial gradient',

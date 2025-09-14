@@ -49,9 +49,9 @@ export default function Home() {
               </span>
             </h2>
             <div className="mt-6 p-4 bg-white rounded">
-              <p className="text-center text-lg leading-6 text-gray-600 dark:text-gray-200 font-medium cursor-copy" onClick={handleCopy}
+              <p className="font-mono text-center text-lg leading-6 text-gray-600 dark:text-gray-200 font-medium cursor-copy" onClick={handleCopy}
               >
-                npm i @paper-design / shaders - react
+                npm i @paper-design/shaders-react
               </p>
             </div>
             <div className="mt-10 flex gap-4">
@@ -100,7 +100,7 @@ function ShaderItem({
   return (
     <div>
       <div
-        className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl bg-cream/50 outline-offset-4 outline-focus will-change-transform group-focus-visible:outline-2 data-pixelated:pixelated squircle:rounded-4xl"
+        className=" z-100 relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl bg-cream/50 outline-offset-4 outline-focus will-change-transform group-focus-visible:outline-2 data-pixelated:pixelated squircle:rounded-4xl"
         onTouchStart={() => setShaderVisibility('visible')}
         onTouchEnd={() => setShaderVisibility('fading-out')}
         onTouchCancel={() => setShaderVisibility('fading-out')}
@@ -138,7 +138,7 @@ function ShaderItem({
           />
         )}
       </div>
-      <div className="text-center  bg-gradient-to-r from-white via-slate-200 to-zinc-50 bg-[200%_auto] bg-clip-text leading-tight text-transparent dark:from-neutral-100 dark:via-slate-400 dark:to-neutral-400 z-100">{name}</div>
+      <div className="text-center  bg-gradient-to-r from-white via-slate-200 to-zinc-50 bg-[200%_auto] bg-clip-text leading-tight text-transparent dark:from-neutral-100 dark:via-slate-400 dark:to-neutral-400">{name}</div>
     </div>
   );
 }

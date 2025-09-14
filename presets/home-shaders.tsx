@@ -59,52 +59,16 @@ export const homeShaders: ShaderComponentProps[] = [
         shaderConfig: { ...grainGradientPresets[0].params, frame: 7000, speed: 1.5 },
     },
     {
-        name: 'dot orbit',
-        image: dotOrbitImg,
-        Component: DotOrbit,
-        shaderConfig: { ...dotOrbitPresets[0].params, scale: 0.45 },
-    },
-    {
-        name: 'dot grid',
-        image: dotGridImg,
-        Component: DotGrid,
-        shaderConfig: { ...dotGridPresets[0].params, speed: 0, gapX: 24, gapY: 24, size: 1.5 },
-    },
-    {
-        name: 'warp',
-        image: warpImg,
-        Component: Warp,
-        shaderConfig: { ...warpPresets[0].params, scale: 0.6 },
-    },
-    {
-        name: 'spiral',
-        image: spiralImg,
-        Component: Spiral,
-        shaderConfig: { ...spiralPresets[0].params, scale: 0.5, speed: 2 },
-    },
-    {
         name: 'swirl',
         image: swirlImg,
         Component: Swirl,
         shaderConfig: { ...swirlPresets[0].params },
     },
     {
-        name: 'waves',
-        image: wavesImg,
-        Component: Waves,
-        shaderConfig: { ...wavesPresets[0].params, speed: 0, scale: 0.55, spacing: 1.2 },
-    },
-    {
         name: 'neuro noise',
         image: neuroNoiseImg,
         Component: NeuroNoise,
         shaderConfig: { ...neuroNoisePresets[0].params, scale: 0.8 },
-    },
-    {
-        name: 'perlin',
-        image: perlinNoiseImg,
-        Component: PerlinNoise,
-        shaderConfig: { ...perlinNoisePresets[0].params, scale: 0.8, speed: 0.2 },
     },
     {
         name: 'simplex noise',
@@ -163,12 +127,7 @@ export const homeShaders: ShaderComponentProps[] = [
         Component: PaperTexture,
         shaderConfig: { ...paperTexturePresets[0].params, scale: 1.05 },
     },
-    {
-        name: 'fluted glass',
-        image: flutedGlassImg,
-        Component: FlutedGlass,
-        shaderConfig: { ...flutedGlassPresets[0].params, scale: 1.05, count: 20, distortion: 0.2 },
-    },
+
     {
         name: 'water',
         image: waterImg,

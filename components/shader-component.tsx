@@ -3,7 +3,7 @@ import { StaticImageData } from "next/image";
 export type ShaderComponentProps = {
     name: string
     image: StaticImageData,
-    Component: React.FC<any>,
+    Component: React.FC<Record<string, unknown>>,
     shaderConfig: Record<string, unknown>
 }
 

@@ -77,8 +77,8 @@ export default function Home() {
         <div className="py-32 text-lg">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 xs:grid-cols-2 md:gap-12 lg:grid-cols-3 2xl:grid-cols-4 3xl:gap-64">
             {homeShaders.map((shader) => (
-              <div onClick={() => handlePreviewShader(shader.name)}>
-                <ShaderItem key={shader.name} {...shader} />
+              <div onClick={() => handlePreviewShader(shader.name)} key={shader.name}>
+                <ShaderItem {...shader} />
               </div>
             ))}
           </div>

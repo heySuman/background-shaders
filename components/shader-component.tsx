@@ -9,7 +9,7 @@ export type ShaderComponentProps = {
 
 export default function ShaderComponent(
     { shaderComponentProps, props }:
-        { shaderComponentProps: ShaderComponentProps, props: any }) {
+        { shaderComponentProps: ShaderComponentProps, props: Record<string, unknown> }) {
     const { Component, shaderConfig } = shaderComponentProps;
     return <Component {...shaderConfig} {...props} />
 }

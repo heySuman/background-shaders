@@ -1,5 +1,11 @@
+"use client"
+import ShaderComponent, { ShaderComponentProps } from "@/components/shader-component";
 import { Button } from "@/components/ui/button";
+import { homeShaders } from "@/presets/home-shaders";
+import clsx from "clsx";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
   return (
@@ -37,6 +43,70 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+
+      {/* Cards */}
+      <div className="py-32 text-lg">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 xs:grid-cols-2 md:gap-12 lg:grid-cols-3 2xl:grid-cols-4 3xl:gap-64">
+          {homeShaders.map((shader) => (
+            <ShaderItem key={shader.name} {...shader} />
+          ))}
+        </div>
+      </div>
     </main>
+  );
+}
+
+function ShaderItem({
+  name,
+  image,
+  shaderConfig,
+  Component,
+}: ShaderComponentProps) {
+  const [shaderVisibility, setShaderVisibility] = useState<'hidden' | 'visible' | 'fading-out'>('hidden');
+
+  return (
+    <div>
+      <div
+        className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl bg-cream/50 outline-offset-4 outline-focus will-change-transform group-focus-visible:outline-2 data-pixelated:pixelated squircle:rounded-4xl"
+        onTouchStart={() => setShaderVisibility('visible')}
+        onTouchEnd={() => setShaderVisibility('fading-out')}
+        onTouchCancel={() => setShaderVisibility('fading-out')}
+        onPointerEnter={(event) => {
+          if (event.pointerType !== 'touch') {
+            setShaderVisibility('visible');
+          }
+        }}
+        onPointerLeave={(event) => {
+          if (event.pointerType !== 'touch') {
+            setShaderVisibility('fading-out');
+          }
+        }}
+      >
+        <Image
+          className="absolute aspect-[4/3] h-full w-full"
+          src={image}
+          alt={`Preview of ${name}`}
+          unoptimized
+          priority
+        />
+
+        {shaderVisibility !== 'hidden' && shaderConfig.speed !== 0 && (
+          <ShaderComponent
+            shaderComponentProps={{ name, image, Component, shaderConfig }}
+            props={{
+              className: clsx(
+                "absolute aspect-[4/3] h-full w-full transition-opacity transition-filter duration-300 ease-out",
+                {
+                  "opacity-0 blur-sm": shaderVisibility === "fading-out",
+                  "opacity-100": shaderVisibility === "visible",
+                }
+              ),
+            }}
+          />
+        )}
+      </div>
+      <div className="text-center">{name}</div>
+    </div>
   );
 }

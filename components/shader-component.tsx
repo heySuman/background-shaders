@@ -1,13 +1,15 @@
-import { StaticImageData } from "next/image"
+import { StaticImageData } from "next/image";
 
 export type ShaderComponentProps = {
     name: string
-    Component: React.FC<any>,
     image: StaticImageData,
+    Component: React.FC<any>,
     shaderConfig: Record<string, unknown>
 }
 
-export default function ShaderComponent({ shaderComponentProps }: { shaderComponentProps: ShaderComponentProps }) {
+export default function ShaderComponent(
+    { shaderComponentProps, props }:
+        { shaderComponentProps: ShaderComponentProps, props: any }) {
     const { Component, shaderConfig } = shaderComponentProps;
-    return <Component {...shaderConfig} />
+    return <Component {...shaderConfig} {...props} />
 }

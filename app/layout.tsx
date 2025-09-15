@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Paper Background Examples",
-  description: "Additional examples of the paper design.",
+  title: "Paper Design Preview",
+  description: "Preview the paper design background shaders.",
 };
 
 export default function RootLayout({

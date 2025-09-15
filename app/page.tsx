@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
-import { ArrowRight, Code, Eye } from "lucide-react";
+import { ArrowRight, Code, Copy, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { homeShaders } from "@/presets/home-shaders";
 import ShaderComponent, { ShaderComponentProps } from "@/components/shader-component";
@@ -48,12 +48,13 @@ export default function Home() {
                 background shaders
               </span>
             </h2>
-            <div className="mt-6 p-4 bg-white rounded">
-              <p className="font-mono text-center text-lg leading-6 text-gray-600 dark:text-gray-200 font-medium cursor-copy" onClick={handleCopy}
-              >
-                npm i @paper-design/shaders-react
-              </p>
+
+            <div className="mt-6 bg-gray-100 flex gap-4 p-4 rounded-md">
+              <div className="font-mono text-center text-lg leading-6 text-gray-600 dark:text-gray-200 font-medium ">npm i @paper-design/shaders-react</div>
+              <div onClick={handleCopy} className="border-l-2 pl-4 border-gray-500 cursor-pointer"><Copy/></div>
             </div>
+            
+            
             <div className="mt-10 flex gap-4">
               <a
                 href="https://github.com/heySuman/background-shaders"

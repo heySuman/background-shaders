@@ -1,9 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Geist_Mono, Inter } from "next/font/google";
+import { Geist_Mono, Geist } from "next/font/google";
 
-const geistSans = Inter({
-  variable: "--font-inter",
+const geistSans = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
 });
 

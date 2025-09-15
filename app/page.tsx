@@ -1,21 +1,19 @@
 "use client"
 import clsx from "clsx";
-import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
-import { ArrowRight, Code, Copy, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image, { StaticImageData } from "next/image";
 import { homeShaders } from "@/presets/home-shaders";
+import { ArrowRight, Code, Copy, Eye } from "lucide-react";
 import ShaderComponent, { ShaderComponentProps } from "@/components/shader-component";
 
 export default function Home() {
 
   const [activeShader, setActiveShader] = useState<ShaderComponentProps | null>(null);
 
-
   const handlePreviewShader = (name: string) => {
     const shader = homeShaders.filter(shader => shader.name === name);
-
     setActiveShader(shader[0])
   }
 
@@ -25,7 +23,7 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-black">
+    <div className="bg-gray-800">
       {
         activeShader &&
         <ShaderComponent
@@ -37,36 +35,44 @@ export default function Home() {
           }}
         />
       }
-      <main className="font-sans md:max-w-3/4 mx-auto">
+      <main className="font-sans max-w-full md:max-w-3/4 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pt-20">
-          <div className="relative mx-auto flex max-w-2xl flex-col items-center">
-            <div className="mb-8 flex">
-            </div>
-            <h2 className="text-center text-3xl font-medium text-white dark:text-gray-50 sm:text-6xl">
-              Simple, stunning{' '}
-              <span className="animate-text-gradient inline-flex bg-gradient-to-r from-white via-slate-900 to-zinc-50 bg-[200%_auto] bg-clip-text leading-tight text-transparent dark:from-neutral-100 dark:via-slate-400 dark:to-neutral-400">
+          <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white dark:text-gray-50 leading-snug sm:leading-tight">
+              Simple, stunning{" "}
+              <span className="animate-text-gradient inline-flex bg-gradient-to-r from-white via-slate-500 to-zinc-50 bg-[200%_auto] bg-clip-text text-transparent dark:from-neutral-100 dark:via-slate-400 dark:to-neutral-400">
                 background shaders
               </span>
             </h2>
 
-            <div className="mt-6 bg-gray-100 flex gap-4 p-4 rounded-md">
-              <div className="font-mono text-center text-lg leading-6 text-gray-600 dark:text-gray-200 font-medium ">npm i @paper-design/shaders-react</div>
-              <div onClick={handleCopy} className="border-l-2 pl-4 border-gray-500 cursor-pointer"><Copy/></div>
+            <div className="mt-6 bg-gray-100 flex items-center sm:gap-4 gap-2 p-3 rounded-md w-full sm:w-auto">
+              <div className="font-mono text-base sm:text-lg text-gray-600 dark:text-gray-200 font-medium text-center sm:text-left overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
+                npm i @paper-design/shaders-react
+              </div>
+              <div
+                onClick={handleCopy}
+                className="hidden sm:flex border-l-2 pl-4 border-gray-500 cursor-pointer"
+              >
+                <Copy />
+              </div>
             </div>
-            
-            
-            <div className="mt-10 flex gap-4">
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <a
                 href="https://github.com/heySuman/background-shaders"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center"
               >
-                <Button className="cursor-pointer">
+                <Button className="cursor-pointer w-full sm:w-auto">
                   Go to GitHub <ArrowRight className="pl-0.5" size={16} />
-                </Button>{' '}
+                </Button>
               </a>
-              <Button variant="secondary" onClick={() => setActiveShader(null)} className="cursor-pointer">
+              <Button
+                variant="secondary"
+                onClick={() => setActiveShader(null)}
+                className="cursor-pointer w-full sm:w-auto"
+              >
                 Reset background
               </Button>
             </div>
@@ -74,18 +80,23 @@ export default function Home() {
         </div>
 
         {/* Cards */}
-        <div className="py-32 text-lg">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 xs:grid-cols-2 md:gap-12 lg:grid-cols-3 2xl:grid-cols-4 3xl:gap-64">
+        <div className="py-20 sm:py-32 text-base sm:text-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 2xl:grid-cols-4 sm:gap-12">
             {homeShaders.map((shader) => (
               <div key={shader.name}>
-                <ShaderPreview name={shader.name} image={shader.image} handlePreviewShader={handlePreviewShader} />
+                <ShaderPreview
+                  name={shader.name}
+                  image={shader.image}
+                  handlePreviewShader={handlePreviewShader}
+                />
               </div>
             ))}
           </div>
         </div>
-      </main >
+      </main>
+
       <Toaster />
-    </div >
+    </div>
   );
 }
 
@@ -96,24 +107,24 @@ function ShaderPreview({
 }: { name: string, image: StaticImageData, handlePreviewShader: (name: string) => void }) {
 
   return (
-    <div className="z-100 relative">
+    <div className="z-100 relative group">
       <div
         className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl bg-cream/50 outline-offset-4 outline-focus will-change-transform group-focus-visible:outline-2 data-pixelated:pixelated squircle:rounded-4xl"
       >
         <Image
-          className="absolute aspect-[4/3] h-full w-full"
+          className="absolute aspect-[4/3] h-full w-full object-cover"
           src={image}
           alt={`Preview of ${name}`}
           unoptimized
           priority
         />
 
-        <div className="absolute top-2 left-2 aspect-[4/3] h-full w-full flex gap-2">
+        <div className="absolute inset-0 flex gap-2 p-2 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 justify-start items-start">
           <Button className="cursor-pointer" variant={"outline"} onClick={() => handlePreviewShader(name)} ><Eye /></Button>
           <Button className="cursor-pointer" variant={"outline"}><Code /></Button>
         </div>
       </div>
-      <p className="text-white text-center">{name}</p>
+      <p className="text-white text-center mt-2 text-sm sm:text-base md:text-lg">{name}</p>
     </div>
   );
 }
